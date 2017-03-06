@@ -85,8 +85,9 @@
     parser.delegate = self;
     [parser parse];
     
-    [self performSelectorOnMainThread:@selector(rssFeedsParsed:) withObject:self.currentParseBatch waitUntilDone:YES];
-    [self.currentParseBatch removeAllObjects];
+    if (self.currentParseBatch.count) {
+        [self performSelectorOnMainThread:@selector(rssFeedsParsed:) withObject:self.currentParseBatch waitUntilDone:YES];
+    }
 }
 
 
@@ -162,6 +163,7 @@ static NSString *kDescriptionElementLink  = @"link";
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     
     if (parseError.code != NSXMLParserDelegateAbortedParseError) {
+        [self.currentParseBatch removeAllObjects];
         [self performSelectorOnMainThread:@selector(handleRssFeedsError:) withObject:parseError waitUntilDone:NO];
     }
 }

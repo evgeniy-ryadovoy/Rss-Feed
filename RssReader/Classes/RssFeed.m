@@ -24,6 +24,9 @@
 
 @implementation RssFeed
 
+const float kRequestTime = 15.0;
+const float kConnectionLiveTime = 15.0;
+
 - (instancetype)init {
     return [self initWithTitle:@"title" sourceURLString:@"URL"];
 }
@@ -71,12 +74,17 @@
     
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:self.sourceURLString]];
     
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    config.timeoutIntervalForRequest = kRequestTime;
+    config.timeoutIntervalForRequest = kConnectionLiveTime;
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
     // create an session data task to obtain and download the app icon
-    self.sessionTask = [[NSURLSession sharedSession] dataTaskWithRequest:urlRequest
-                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    self.sessionTask = [session dataTaskWithRequest:urlRequest
+                                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                        
        [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
-           
+           //NSLog(error.localizedDescription);
            // back on the main thread, check for errors, if no errors start the parsing
            if (error != nil && response == nil) {
                
@@ -89,7 +97,7 @@
                } else {
                    self.error = error;
                    
-                   // refreshing complete - use completion block
+                   // error - use completion block
                    if (self.completionBlock) {
                        self.completionBlock(NO, self.error);
                    }
@@ -123,7 +131,7 @@
                                                     code:httpResponse.statusCode
                                                 userInfo:userInfo];
                    
-                   // refreshing complete - use completion block
+                   // error - use completion block
                    if (self.completionBlock) {
                        self.completionBlock(NO, self.error);
                    }

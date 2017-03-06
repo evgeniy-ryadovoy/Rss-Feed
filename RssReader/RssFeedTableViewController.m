@@ -130,24 +130,23 @@ const float RssFeedTableHeaderHeight = 38.0;
     [self disableUserInteraction];
     // simple flag for errors. In fact we can keep errors for each feed and log it into debug
     __block BOOL errorOccured;
+    __weak RssFeedTableViewController *weakSelf = self;
     NSInteger count = self.rssFeeds.count;
     
     // use dispatch_group to increase refresh speed
     dispatch_group_t refreshGroup = dispatch_group_create();
     
     dispatch_apply(count, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(size_t i) {
-        
-        RssFeed *feed = self.rssFeeds[i];
-        
+    
         dispatch_group_enter(refreshGroup);
-        [feed refreshFeedWithCompletionHandler:^(BOOL success, NSError *_error) {
+        [weakSelf.rssFeeds[i] refreshFeedWithCompletionHandler:^(BOOL success, NSError *_error) {
 
-            self.rssFeeds[i] = feed;
+            //self.rssFeeds[i] = feed;
             
             if (_error) {
                 errorOccured = YES;
             }
-            
+         
             dispatch_group_leave(refreshGroup);
         }];
     });

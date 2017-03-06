@@ -23,7 +23,7 @@
 		7A1ECB341E6AFE220010E63C /* RssFeedSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1ECB331E6AFE220010E63C /* RssFeedSectionHeaderView.m */; };
 		7A1ECB361E6AFE2C0010E63C /* RssFeedSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1ECB351E6AFE2C0010E63C /* RssFeedSectionHeaderView.xib */; };
 		7A1ECB4E1E6C4D4A0010E63C /* RssFeedParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1ECB4D1E6C4D4A0010E63C /* RssFeedParseOperation.m */; };
-		7A1ECB501E6D40450010E63C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7A1ECB4F1E6D40450010E63C /* README.md */; };
+		7A1ECB511E6D47910010E63C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7A1ECB4F1E6D40450010E63C /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -264,6 +264,7 @@
 				TargetAttributes = {
 					7A1ECAE11E6AAF4D0010E63C = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 8MC3WYRL49;
 						ProvisioningStyle = Automatic;
 					};
 					7A1ECAFA1E6AAF4D0010E63C = {
@@ -303,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1ECB511E6D47910010E63C /* README.md in Resources */,
 				7A1ECAF51E6AAF4D0010E63C /* LaunchScreen.storyboard in Resources */,
 				7A1ECAF21E6AAF4D0010E63C /* Assets.xcassets in Resources */,
 				7A1ECB361E6AFE2C0010E63C /* RssFeedSectionHeaderView.xib in Resources */,
@@ -340,7 +342,6 @@
 				7A1ECB211E6AB0D10010E63C /* RssFeed.m in Sources */,
 				7A1ECB311E6AFDEC0010E63C /* RssEntryTableViewCell.m in Sources */,
 				7A1ECB2D1E6AC5170010E63C /* RssSourceViewController.m in Sources */,
-				7A1ECB501E6D40450010E63C /* README.md in Sources */,
 				7A1ECB1F1E6AB0D10010E63C /* RssEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,7 +492,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8MC3WYRL49;
 				INFOPLIST_FILE = RssReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -505,7 +506,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8MC3WYRL49;
 				INFOPLIST_FILE = RssReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
